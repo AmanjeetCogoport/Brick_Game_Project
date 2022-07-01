@@ -38,4 +38,42 @@ function random_color() {
     return number;
   }
 
+// add live and score calculatin as well as updation functionality.
+
+
+
+
+
+
+
+// ********* creating classes for all the objects that this game has one by one :*******
+
+// creating Pad class
+class Pad {
+    constructor(posX, posY) {
+      this.l = width_pad;
+      this.h = height_pad;
+      this.y = posY;
+      this.x = posX -  width_pad/ 2;
+      this.speed = 5.5;
+    }
+  
+    show() {
+      if (this.x <= 0) {
+        this.x = 0;
+      }
+  
+      if (this.x + this.l >= width) {
+        this.x = width - this.l;
+      }
+  
+      fill(random_color());
+      rect(this.x, this.y, this.l, this.h, 10);
+    }
+  
+  
+    move(dir) {
+      this.x += dir * this.speed;
+    }
+  }
 
