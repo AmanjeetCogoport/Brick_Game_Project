@@ -178,5 +178,34 @@ function init(g) {
   }
 
 
+// ******* creating key pressing event to move left and right pad. *******
+
+function keyPressed() {
+    if (keyCode === LEFT_ARROW) {
+      direction = "left";
+    } else if (keyCode === RIGHT_ARROW) {
+      direction = "right";
+    }
+    if (keyCode === 32) {
+      init(true);
+    }
+  }
+  
+  
+  
+  function padControl() {
+    // Script for smooth pad control
+    if (direction === "left") {
+      pad.move(LEFT);
+    } else if (direction === "right") {
+      pad.move(RIGHT);
+    }
+  
+    if (!keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW)) {
+      direction = "";
+    }
+  }
+
+
 
 
