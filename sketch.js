@@ -39,7 +39,22 @@ function random_color() {
   }
 
 // add live and score calculatin as well as updation functionality.
-
+// calculate score 
+function calculate_score(increaseValue){
+    score += increaseValue;
+    show_score();
+  }
+  
+  // decrease life
+  // function decrease life
+  function decrease_life(){
+  live--;
+  show_score();
+  if(!live) {
+    // stop the game here only.
+    
+  }
+  }
 
 
 
@@ -253,5 +268,5 @@ function setup() {
     ball.show();
   }
 
-  
+
 
