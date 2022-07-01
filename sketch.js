@@ -232,6 +232,7 @@ function padControl() {
   if (!keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW)) {
     direction = "";
   }
+  
 }
 
 // exection of game starts from here
