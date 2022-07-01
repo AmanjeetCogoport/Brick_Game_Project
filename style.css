@@ -1,0 +1,17 @@
+canvas {
+    border: 1px solid #FFAA00;
+  }
+  
+  body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  p{
+    font-size: 30px;
+    position: absolute;
+    top: 600px;
+  }
+  
