@@ -127,4 +127,56 @@ class Ball {
 
 
 
+// ******** create ball object for game ***********
+class Brik {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.h = 30;
+      this.l = 100;
+      this.state = random_num(1,5);  // this will show that when pad will go out 
+      this.color = clr[this.state-1];
+    }
   
+    show() {
+      if (this.state >= 0) {
+        fill(this.color);
+        rect(this.x, this.y, this.l, this.h);
+      }
+    }
+  
+    updateState() {
+      this.state--;
+      if(this.state>=1) this.color = clr[this.state-1];
+      return this.state < 0;
+    }
+  }
+
+
+
+// ***** function from where i will add condition to start the game by pressing space bar ******
+
+
+// init takes 1 parameter g; if g is true, the ball moves; if g is false ball stay still.
+function init(g) {
+    briks = [];
+    pad = new Pad(width / 2, height - 60);
+    ball = new Ball(width / 2, height / 2, 30, g);
+  
+    let space1 = (width - 500) / 6;
+    let space2 = (width - 300) / 4;
+  
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 5; j++) {
+        briks.push(new Brik(j * (100 + space1) + space1, 50 * (i + 1)));
+      }
+    }
+  
+    for (let j = 0; j < 3; j++) {
+      briks.push(new Brik(j * (100 + space2) + space2, 150));
+    }
+  }
+
+
+
+
