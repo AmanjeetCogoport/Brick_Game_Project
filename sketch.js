@@ -77,3 +77,54 @@ class Pad {
     }
   }
 
+
+
+
+// ********** create ball object for game ***********
+
+class Ball {
+    constructor(posX, posY, diameter, status) {
+      this.pos = createVector(posX, posY);
+      this.d = diameter;
+      this.r = diameter / 2;
+      this.v = p5.Vector.random2D(); // create random 2d vector array for incresing the speed
+      this.go = status;
+    }
+  
+    update(pad) {
+      if (!(pad instanceof Pad) || this.show == false) {
+        return false;
+      }
+  
+      this.v.setMag(6);
+      this.pos.add(this.v);
+  
+      let x = this.pos.x;
+      let y = this.pos.y;
+  
+      if (x - this.r <= 0 || x + this.r >= width) {
+        this.v.x *= -1;
+      }
+      if (y - this.r <= 0) {
+        this.v.y *= -1;
+      }
+      if (y + this.r >= height) {
+        this.show = false;
+        this.v.setMag(0);
+      }
+  
+      if (y + this.r >= pad.y && x >= pad.x && x <= pad.x + pad.l) {
+        this.v.y *= -1;
+      }
+    }
+  
+    show() {
+      fill(random_color());
+      circle(this.pos.x, this.pos.y, this.d);
+    }
+  }
+  
+
+
+
+  
