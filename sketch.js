@@ -261,13 +261,15 @@ function draw() {
         ball.v.y *= -1;
         if (brik.updateState()) {
           briks.slice(b, 1);
-          console.log(briks.length);
+
+          // checking condition for player to win the game i.e all bricks gets removed
+          //   console.log(briks.length);
           if (++win >= 20) {
             ball.show = false;
             fill("green");
             textSize(80);
             textAlign(CENTER, CENTER);
-            msg = "You Loss";
+            msg = "You Win";
             text(msg, width / 2, height / 2);
             text("Score : " + score, width / 2, height / 2 + 100);
             // noLoop();
@@ -291,11 +293,13 @@ function draw() {
   // Showing elements
   pad.show();
 
+
+  // Checking condition to loose the game
   try {
     ball.show();
   } catch (e) {
     // alert("Your Score is " + score);
-
+    
     fill("red");
     textSize(80);
     textAlign(CENTER, CENTER);
