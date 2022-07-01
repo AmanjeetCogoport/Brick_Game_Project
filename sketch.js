@@ -208,4 +208,50 @@ function keyPressed() {
 
 
 
+// ******* execution of this game will goes from here **********
+
+function setup() {
+    createCanvas(700, 600);
+  
+    init(false);
+}
+
+
+// this function run after every 10 milli second
+  function draw() {
+    background(0);
+    show_score();
+  
+    console.log(briks.length);
+    for (let b = briks.length - 1; b >= 0; b--) {
+      let brik = briks[b];
+      if (
+        ball.pos.x  > brik.x &&
+        ball.pos.x < brik.x + brik.l &&
+        ball.pos.y + ball.r > brik.y &&
+        ball.pos.y - ball.r < brik.y + brik.h
+      ) {
+        if (brik.state >= 0) {
+          ball.v.y *= -1;
+          if (brik.updateState()) {
+            briks.slice(b, 1);
+          }
+        }
+      }
+  
+      brik.show();
+    }
+  
+    // Update ball and pad
+    ball.update(pad);
+  
+    // Checking key for controlling pad
+    padControl();
+  
+    // Showing elements
+    pad.show();
+    ball.show();
+  }
+
+  
 
